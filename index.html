@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +7,43 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body { background: #0a0a0a; color: #f1f1f1; font-family: system-ui, -apple-system, sans-serif; }
-    .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('IMG_6044.JPG') center/cover no-repeat; }
-    .nav-link { transition: all 0.3s; }
-    .nav-link:hover { color: #c026d3; letter-spacing: 1px; }
-    img { transition: transform 0.6s ease; }
-    img:hover { transform: scale(1.03); }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+    }
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('IMG_6044.JPG') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+    .nav-link {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-link:hover {
+      color: #c026d3;
+      letter-spacing: 2px;
+    }
+    .work-img {
+      transition: transform 0.6s ease;
+    }
+    .work-img:hover {
+      transform: scale(1.04);
+    }
+    .section-title {
+      font-size: 3.2rem;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
   </style>
 </head>
-<body>
+<body class="min-h-screen">
 
   <!-- NAV -->
-  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 py-6">
+  <nav class="fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-md z-50 py-7">
     <div class="max-w-6xl mx-auto px-8 flex justify-between items-center">
       <h1 class="text-2xl font-light tracking-widest">DMITRIY KOVIN</h1>
-      <div class="flex gap-10 text-sm uppercase tracking-widest">
+      <div class="flex items-center gap-10 text-sm uppercase tracking-widest font-light">
         <a href="#work" class="nav-link">Work</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#music" class="nav-link">Music</a>
@@ -32,31 +54,72 @@
 
   <!-- HERO -->
   <section class="hero flex items-center justify-center text-center relative">
-    <div class="max-w-3xl px-6">
-      <h2 class="text-6xl md:text-7xl font-light tracking-tight mb-6">DJ & MODEL</h2>
-      <p class="text-xl text-gray-300">St. Petersburg • Koh Phangan</p>
+    <div class="max-w-4xl px-6 z-10">
+      <h2 class="text-6xl md:text-7xl font-light tracking-tighter mb-6">DJ &amp; MODEL</h2>
+      <p class="text-xl md:text-2xl text-gray-300">Saint Petersburg • Koh Phangan</p>
     </div>
   </section>
 
-  <!-- WORK / GALLERY -->
-  <section id="work" class="py-24">
+  <!-- WORK -->
+  <section id="work" class="py-28">
     <div class="max-w-6xl mx-auto px-8">
-      <h2 class="text-5xl font-light mb-12 text-center">Selected Works</h2>
+      <h2 class="section-title text-center mb-16">Selected Works</h2>
+      
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Добавляй свои фото сюда -->
-        <img src="IMG_6044.JPG" class="w-full aspect-[4/5] object-cover rounded-xl cursor-pointer" onclick="openLightbox(this)">
-        <img src="IMG_6045.JPG" class="w-full aspect-[4/5] object-cover rounded-xl cursor-pointer" onclick="openLightbox(this)">
-        <!-- ... и остальные -->
+        <img src="IMG_6044.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
+        <img src="IMG_6045.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
+        <img src="IMG_6046.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
+        <img src="IMG_6197.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
+        <img src="DSC06761.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
+        <img src="IMG_6048.JPG" onclick="openLightbox(this)" class="work-img w-full aspect-[4/5] object-cover rounded-2xl cursor-pointer">
       </div>
     </div>
   </section>
 
-  <!-- ABOUT, MUSIC, CONTACT — можно добавить позже -->
+  <!-- ABOUT -->
+  <section id="about" class="py-28 bg-black/70">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="section-title mb-12">About Me</h2>
+      <p class="text-lg leading-relaxed text-gray-300 max-w-2xl mx-auto">
+        DJ and international fashion model based between Saint Petersburg and Koh Phangan. 
+        Creating atmosphere both on stage and in front of the camera.
+      </p>
+    </div>
+  </section>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center z-50">
-    <button onclick="closeLightbox()" class="absolute top-8 right-8 text-4xl text-white">×</button>
-    <img id="lightbox-img" class="max-h-[90vh] max-w-[90%] rounded-2xl">
+  <!-- MUSIC -->
+  <section id="music" class="py-28">
+    <div class="max-w-5xl mx-auto px-8">
+      <h2 class="section-title text-center mb-16">Music</h2>
+      <div class="max-w-2xl mx-auto">
+        <iframe width="100%" height="380" scrolling="no" frameborder="no" allow="autoplay" 
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/dmitriykovin&color=%23c026d3&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-28 border-t border-gray-800">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="section-title mb-10">Let's Collaborate</h2>
+      <p class="text-xl text-gray-400 mb-12">Booking • Photoshoots • Events</p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="mailto:dmitriy.kovin@gmail.com" class="px-10 py-5 border border-purple-500 hover:bg-purple-600 hover:text-white transition text-lg">
+          dmitriy.kovin@gmail.com
+        </a>
+        <a href="https://instagram.com/dmitriykovin" target="_blank" class="px-10 py-5 border border-purple-500 hover:bg-purple-600 hover:text-white transition text-lg">
+          Instagram @dmitriykovin
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center z-[1000]">
+    <button onclick="closeLightbox()" class="absolute top-8 right-8 text-5xl text-white hover:text-purple-400">×</button>
+    <img id="lightbox-img" class="max-h-[92vh] max-w-[92%] rounded-2xl shadow-2xl">
   </div>
 
   <script>
